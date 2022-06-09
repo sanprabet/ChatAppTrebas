@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/header.scss'
 
-function Header() {
+const Header = (props) => {
   return (
     <div className="header__container">
       <div className="header-logo__container">
@@ -10,10 +10,12 @@ function Header() {
           ChatApp
         </h1>
       </div>
-      <div className="header-button__container">
-        <span>Usuario Gonorrea</span>
-        <button>Logout</button>
-      </div>
+      { props.user &&
+        <div className="header-button__container">
+          <span>{props.user}</span>
+          <button onClick={() => props.setUser("")}>Logout</button>
+        </div>
+      }
     </div>
   )
 }
